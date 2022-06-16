@@ -24,9 +24,13 @@ let tagStatus = {
   newzealand: false,
   taiwan: false,
   california: false,
+  italy: false,
   earth: false,
   tree: false,
-  grass: false
+  grass: false,
+  dyeing: false,
+  weaving: false,
+  painting: false,
 };
 
 // addCard.addEventListener("click", () => {
@@ -112,6 +116,13 @@ function filterColours() {
     bufferColour = addColour;
     addColour = checkMaterial(addColour);
 
+    if (addColour.length > 0) {
+      addColour = checkProject(addColour)
+    } else {
+      addColour = checkProject(bufferColour)
+    }
+
+
     addColour.forEach((item) => {
       filteredColour.push(item);
     });
@@ -132,12 +143,23 @@ function filterColours() {
       filteredColour.push(item);
     });
   }
+  if (tagStatus.california == true) {
+    let addColour = colours.filter((col) => col.place === "Italy");
+    bufferColour = [...bufferColour, ...addColour];
+    addColour = checkMaterial(addColour);
+    addColour.forEach((item) => {
+      filteredColour.push(item);
+    });
+  }  
 
   if (
     filteredColour.length == 0 &&
     tagStatus.tree == false &&
     tagStatus.earth == false &&
-    tagStatus.grass == false
+    tagStatus.grass == false &&
+    tagStatus.painting == false &&
+    tagStatus.dyeing == false && 
+    tagStatus.weaving == false
   ) {
     filteredColour = bufferColour;
   }
@@ -152,6 +174,7 @@ function filterColours() {
   }
 
   if (filteredColour.length == 0) {
+    console.log('here')
     filteredColour = colours;
   }
 
@@ -177,9 +200,6 @@ function checkMaterial(addColour) {
   let filteredMat = [];
   if (tagStatus.earth == true) {
     let addMat = addColour.filter((col) => col.material === "Earth");
-    // if (addMat.length == 0) {
-    //   return addMat;
-    // }
     addMat.forEach((colour) => {
       filteredMat.push(colour);
     });
@@ -187,9 +207,6 @@ function checkMaterial(addColour) {
 
   if (tagStatus.tree == true) {
     let addMat = addColour.filter((col) => col.material === "Tree");
-    // if (addMat.length == 0) {
-    //   return addMat;
-    // }
     addMat.forEach((colour) => {
       filteredMat.push(colour);
     });
@@ -197,19 +214,39 @@ function checkMaterial(addColour) {
 
   if (tagStatus.grass == true) {
     let addMat = addColour.filter((col) => col.material === "Grass");
-    // if (addMat.length == 0) {
-    //   return addMat;
-    // }
     addMat.forEach((colour) => {
       filteredMat.push(colour);
     });
   }
 
-  // if (filteredMat.length == 0) {
-  //   filteredMat = addColour;
-  // }
-
   return filteredMat;
+}
+
+function checkProject(addMat) {
+  let filteredProj = [];
+  if (tagStatus.dyeing == true) {
+    let addProj = addMat.filter((col) => col.dyeing === true);
+    console.log('here')
+    addProj.forEach((colour) => {
+      filteredProj.push(colour);
+    });
+  }
+
+  if (tagStatus.weaving == true) {
+    let addProj = addMat.filter((col) => col.weaving === true);
+    addProj.forEach((colour) => {
+      filteredProj.push(colour);
+    });
+  }
+
+  if (tagStatus.painting == true) {
+    let addProj = addMat.filter((col) => col.painting === true);
+    addProj.forEach((colour) => {
+      filteredProj.push(colour);
+    });
+  }
+  console.log(filteredProj)
+  return filteredProj;
 }
 
 colours.forEach((colour) => {

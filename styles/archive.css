@@ -59,16 +59,14 @@ body {
 .modal {
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 15%;
+  height: 100%;
   transform: translate(-50%, -50%) scale(0);
-  transition: 200ms ease-in-out;
-  border: 1px solid black;
-  border-radius: 10px;
+  transition: 300ms ease-in-out;
   z-index: 2;
   background-color: white;
   padding: 25px;
-  width: 50%;
-  max-width: 750px;
+  width: 30%;
 
   letter-spacing: 0;
 }
@@ -129,6 +127,7 @@ body {
   max-width: 1000px;
   display: flex;
   flex-flow: row wrap;
+  margin: 25px 0 0 0;
 }
 .card {
   width: 25%;
@@ -157,11 +156,11 @@ body {
 .tag-holder {
   width: 90%;
   max-width: 1000px;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 20px 0px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: top;
 }
 
 .tag-divider {
@@ -170,22 +169,35 @@ body {
 }
 
 .tag {
-  font-size: 16px;
-  padding: 10px 15px 10px 15px;
+  width: 80%;
+  font-size: 12px;
+  margin: 5px 25px 0px 0px;
+  padding: 10px 0px 10px 0px;
   background-color: none;
-  height: 2.5em;
-  width: fit-content;
+  height: 1em;
   border-radius: 2em;
-  border: 2px solid;
+  border: 0px solid;
   text-align: centre;
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
 
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 .tag.active {
-  background-color: black;
+  background-color: black; 
   color: white;
+}
+
+.tag-holder-divider {
+  width: 1px;
+  background-color: black;
+  margin: 0px 10px 0 0;
+}
+
+.tag-holder-horizontal-line {
+  height: 1px;
+  background-color: black;
+  width: 90%;
 }
