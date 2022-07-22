@@ -10,7 +10,8 @@ const itemArray = [...Array(10).keys()];
 
 const currentArrayItem = 0;
 
-const tags = document.querySelectorAll("div.tag");
+const tags = document.querySelectorAll("div.tag-inner");
+const tagsOuter = document.querySelectorAll("div.tag")
 
 const modalTitle = document.querySelector("div.modal-title");
 const modalContent = document.querySelector("modal-content");
@@ -80,16 +81,21 @@ function showCards() {
   });
 }
 
-tags.forEach((tag) => {
+
+tagsOuter.forEach((tag, index) => {
   tag.addEventListener("click", function () {
+
+    console.log(index)
     if (tag.classList.contains("active")) {
       tag.classList.remove("active");
-      updateTagStatus(tag.innerHTML, false);
+      console.log(tags[index].innerHTML)
+      updateTagStatus(tags[index].innerHTML, false);
       // tagStatus[0].nz = true
       // console.log(tagStatus[0].nz)
     } else {
       tag.classList.add("active");
-      updateTagStatus(tag.innerHTML, true);
+      console.log(tags[index].innerHTML)
+      updateTagStatus(tags[index].innerHTML, true);
       // tagStatus[0].nz = false
       // console.log(tagStatus[0].nz)
     }
@@ -101,13 +107,14 @@ function updateTagStatus(key, value) {
   const treatedHTMLTag = grabbedHTMLTag.replace(/\s/g, "");
   const loweredHTMLTag = treatedHTMLTag.toLowerCase();
   tagStatus[loweredHTMLTag] = value;
-  // console.log(key, "is set to", value);
+  console.log(key, "is set to", value);
   filterColours();
 }
 
 function filterColours() {
   hideCards();
   removeCards();
+
   let filteredColour = [];
   let bufferColour = [];
 
@@ -115,6 +122,7 @@ function filterColours() {
     let addColour = colours.filter((col) => col.place === "New Zealand");
     bufferColour = addColour;
     addColour = checkMaterial(addColour);
+
 
     if (addColour.length > 0) {
       addColour = checkProject(addColour)
@@ -126,6 +134,7 @@ function filterColours() {
     addColour.forEach((item) => {
       filteredColour.push(item);
     });
+
   }
   if (tagStatus.taiwan == true) {
     let addColour = colours.filter((col) => col.place === "Taiwan");
@@ -143,7 +152,7 @@ function filterColours() {
       filteredColour.push(item);
     });
   }
-  if (tagStatus.california == true) {
+  if (tagStatus.italy == true) {
     let addColour = colours.filter((col) => col.place === "Italy");
     bufferColour = [...bufferColour, ...addColour];
     addColour = checkMaterial(addColour);
@@ -154,9 +163,6 @@ function filterColours() {
 
   if (
     filteredColour.length == 0 &&
-    tagStatus.tree == false &&
-    tagStatus.earth == false &&
-    tagStatus.grass == false &&
     tagStatus.painting == false &&
     tagStatus.dyeing == false && 
     tagStatus.weaving == false
@@ -168,13 +174,29 @@ function filterColours() {
     filteredColour.length == 0 &&
     tagStatus.newzealand == false &&
     tagStatus.taiwan == false &&
-    tagStatus.california == false
+    tagStatus.california == false &&
+    tagStatus.italy == false
   ) {
     filteredColour = checkMaterial(colours);
   }
 
+  if (
+    filteredColour.length == 0 &&
+    tagStatus.newzealand == false &&
+    tagStatus.taiwan == false &&
+    tagStatus.california == false &&
+    tagStatus.italy == false &&    
+
+    tagStatus.tree == false &&
+    tagStatus.earth == false &&
+    tagStatus.grass == false 
+  ) {
+    filteredColour = checkProject(colours);
+  }  
+
+
   if (filteredColour.length == 0) {
-    console.log('here')
+    console.log('nope!')
     filteredColour = colours;
   }
 

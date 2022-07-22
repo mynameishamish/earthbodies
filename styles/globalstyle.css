@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Grosa";
+    font-weight: 400;
+    src: url(fonts/Grosa-Regular.woff);
+}
+
+@font-face {
+    font-family: "Grosa";
+    font-weight: 700;
+    src: url(fonts/Grosa-Bold.woff2);
+}
+
+@font-face {
+    font-family: "SelfModern";
+    font-weight: 400;
+    src: url(fonts/selfmodern-regular.ttf);
+}
+
+@font-face {
+    font-family: "SelfModern";
+    font-weight: 700;
+    src: url(fonts/selfmodern-bold.ttf);
+}
+
+body {
+    font-family: "Grosa";
+    background-color: #DFDDD0;
+}
