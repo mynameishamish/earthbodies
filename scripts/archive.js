@@ -248,23 +248,29 @@ function checkProject(addMat) {
   let filteredProj = [];
   if (tagStatus.dyeing == true) {
     let addProj = addMat.filter((col) => col.dyeing === true);
-    console.log('here')
     addProj.forEach((colour) => {
-      filteredProj.push(colour);
+      if (!filteredProj.includes(colour)) {
+        filteredProj.push(colour);
+      }
+      
     });
   }
 
   if (tagStatus.weaving == true) {
     let addProj = addMat.filter((col) => col.weaving === true);
     addProj.forEach((colour) => {
-      filteredProj.push(colour);
+      if (!filteredProj.includes(colour)) {
+        filteredProj.push(colour);
+      }
     });
   }
 
   if (tagStatus.painting == true) {
     let addProj = addMat.filter((col) => col.painting === true);
     addProj.forEach((colour) => {
-      filteredProj.push(colour);
+      if (!filteredProj.includes(colour)) {
+        filteredProj.push(colour);
+      }
     });
   }
   console.log(filteredProj)
