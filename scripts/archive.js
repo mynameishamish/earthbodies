@@ -228,42 +228,6 @@ function filterColours() {
     filteredColour = checkProject(colours);
   }
 
-  // if (
-  //   filteredColour.length == 0 &&
-  //   tagStatus.painting == false &&
-  //   tagStatus.dyeing == false && 
-  //   tagStatus.weaving == false
-  // ) {
-  //   filteredColour = bufferColour;
-  // }
-
-  // if (
-  //   filteredColour.length == 0 &&
-  //   tagStatus.newzealand == false &&
-  //   tagStatus.taiwan == false &&
-  //   tagStatus.california == false &&
-  //   tagStatus.italy == false
-  // ) {
-  //   filteredColour = checkMaterial(colours);
-  // }
-
-  // if (
-  //   filteredColour.length == 0 &&
-  //   tagStatus.newzealand == false &&
-  //   tagStatus.taiwan == false &&
-  //   tagStatus.california == false &&
-  //   tagStatus.italy == false &&    
-  //   tagStatus.tree == false &&
-  //   tagStatus.earth == false &&
-  //   tagStatus.grass == false 
-  // ) {
-  //   filteredColour = checkProject(colours);
-  // }  
-
-  // if (filteredColour.length == 0) {
-  //   console.log('nope!')
-  //   filteredColour = colours;
-  // }
 
     if (
     tagStatus.newzealand == false &&
