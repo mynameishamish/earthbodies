@@ -121,84 +121,166 @@ function filterColours() {
   if (tagStatus.newzealand == true) {
     let addColour = colours.filter((col) => col.place === "New Zealand");
     bufferColour = addColour;
-    addColour = checkMaterial(addColour);
 
 
-    if (addColour.length > 0) {
-      addColour = checkProject(addColour)
-    } else {
-      addColour = checkProject(bufferColour)
+    if (tagStatus.earth == true || tagStatus.tree == true || tagStatus.grass == true) {
+      addColour = checkMaterial(addColour);
+      if (addColour.length == 0) {
+      }
     }
 
+    if (tagStatus.dyeing == true || tagStatus.weaving == true || tagStatus.painting == true) {
+      addColour = checkProject(addColour);
+      if (addColour.length == 0) {
+      }
+    }
 
     addColour.forEach((item) => {
       filteredColour.push(item);
     });
 
   }
+
   if (tagStatus.taiwan == true) {
     let addColour = colours.filter((col) => col.place === "Taiwan");
     bufferColour = [...bufferColour, ...addColour];
-    addColour = checkMaterial(addColour);
+    if (tagStatus.earth == true || tagStatus.tree == true || tagStatus.grass == true) {
+      addColour = checkMaterial(addColour);
+      if (addColour.length == 0) {
+      }
+    }
+
+    if (tagStatus.dyeing == true || tagStatus.weaving == true || tagStatus.painting == true) {
+      addColour = checkProject(addColour);
+      if (addColour.length == 0) {
+      }
+    }
+
     addColour.forEach((item) => {
       filteredColour.push(item);
     });
   }
+
   if (tagStatus.california == true) {
     let addColour = colours.filter((col) => col.place === "California");
     bufferColour = [...bufferColour, ...addColour];
-    addColour = checkMaterial(addColour);
+    if (tagStatus.earth == true || tagStatus.tree == true || tagStatus.grass == true) {
+      addColour = checkMaterial(addColour);
+      if (addColour.length == 0) {
+      }
+    }
+
+    if (tagStatus.dyeing == true || tagStatus.weaving == true || tagStatus.painting == true) {
+      addColour = checkProject(addColour);
+      if (addColour.length == 0) {
+      }
+    }
+
     addColour.forEach((item) => {
       filteredColour.push(item);
     });
   }
+
   if (tagStatus.italy == true) {
     let addColour = colours.filter((col) => col.place === "Italy");
     bufferColour = [...bufferColour, ...addColour];
-    addColour = checkMaterial(addColour);
+    if (tagStatus.earth == true || tagStatus.tree == true || tagStatus.grass == true) {
+      addColour = checkMaterial(addColour);
+      if (addColour.length == 0) {
+      }
+    }
+
+    if (tagStatus.dyeing == true || tagStatus.weaving == true || tagStatus.painting == true) {
+      addColour = checkProject(addColour);
+      if (addColour.length == 0) {
+      }
+    }
+
     addColour.forEach((item) => {
       filteredColour.push(item);
     });
   }  
 
-  if (
-    filteredColour.length == 0 &&
-    tagStatus.painting == false &&
-    tagStatus.dyeing == false && 
-    tagStatus.weaving == false
-  ) {
-    filteredColour = bufferColour;
-  }
-
-  if (
-    filteredColour.length == 0 &&
+  // No countries selected
+    if (
     tagStatus.newzealand == false &&
     tagStatus.taiwan == false &&
     tagStatus.california == false &&
     tagStatus.italy == false
   ) {
     filteredColour = checkMaterial(colours);
-  }
 
+    if (tagStatus.dyeing == true || tagStatus.weaving == true || tagStatus.painting == true) {
+      filteredColour = checkProject(filteredColour);
+    }
+
+  }
+  
   if (
-    filteredColour.length == 0 &&
     tagStatus.newzealand == false &&
     tagStatus.taiwan == false &&
     tagStatus.california == false &&
-    tagStatus.italy == false &&    
+    tagStatus.italy == false &&
+    tagStatus.tree == false &&
+    tagStatus.earth == false &&
+    tagStatus.grass == false     
+  ) { 
+    filteredColour = checkProject(colours);
+  }
+
+  // if (
+  //   filteredColour.length == 0 &&
+  //   tagStatus.painting == false &&
+  //   tagStatus.dyeing == false && 
+  //   tagStatus.weaving == false
+  // ) {
+  //   filteredColour = bufferColour;
+  // }
+
+  // if (
+  //   filteredColour.length == 0 &&
+  //   tagStatus.newzealand == false &&
+  //   tagStatus.taiwan == false &&
+  //   tagStatus.california == false &&
+  //   tagStatus.italy == false
+  // ) {
+  //   filteredColour = checkMaterial(colours);
+  // }
+
+  // if (
+  //   filteredColour.length == 0 &&
+  //   tagStatus.newzealand == false &&
+  //   tagStatus.taiwan == false &&
+  //   tagStatus.california == false &&
+  //   tagStatus.italy == false &&    
+  //   tagStatus.tree == false &&
+  //   tagStatus.earth == false &&
+  //   tagStatus.grass == false 
+  // ) {
+  //   filteredColour = checkProject(colours);
+  // }  
+
+  // if (filteredColour.length == 0) {
+  //   console.log('nope!')
+  //   filteredColour = colours;
+  // }
+
+    if (
+    tagStatus.newzealand == false &&
+    tagStatus.taiwan == false &&
+    tagStatus.california == false &&
+    tagStatus.italy == false &&
 
     tagStatus.tree == false &&
     tagStatus.earth == false &&
-    tagStatus.grass == false 
+    tagStatus.grass == false &&
+
+    tagStatus.dyeing == false &&
+    tagStatus.weaving == false &&
+    tagStatus.painting == false      
   ) {
-    filteredColour = checkProject(colours);
-  }  
-
-
-  if (filteredColour.length == 0) {
-    console.log('nope!')
     filteredColour = colours;
-  }
+  }  
 
   // Make sure there are no cards here, before making new ones, to prevent animation jumping
 
@@ -273,7 +355,6 @@ function checkProject(addMat) {
       }
     });
   }
-  console.log(filteredProj)
   return filteredProj;
 }
 
