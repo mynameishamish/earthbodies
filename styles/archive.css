@@ -52,26 +52,46 @@ body {
   align-items: center;
   justify-content: center;
   letter-spacing: 1px;
+  flex-direction: column;
 }
 
 .modal {
   position: fixed;
-  top: 50%;
-  left: 15%;
-  height: 100%;
-  transform: translate(-50%, -50%) scale(0);
+  transform: scale(0);
   transition: 300ms ease-in-out;
   z-index: 2;
   background-color: white;
   padding: 25px;
-  width: 30%;
+  width: 75%;
+  max-width: 1200px;
+  height: 75%;
+  align-items: center;  
+  justify-content: center;
 
   letter-spacing: 0;
 }
 
 .modal.active {
-  transform: translate(-50%, -50%) scale(1);
+  transform: scale(1);
   background-color: #00000080;
+}
+
+.modal-content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+
+}
+
+.modal-left {
+  flex: 1;
+}
+
+.modal-right {
+  flex: 2;
+  min-width: 0;
+  padding: 0 0 0 25px;
 }
 
 .modal-header {
@@ -119,6 +139,12 @@ body {
 #overlay.active {
   pointer-events: all;
   opacity: 1;
+}
+
+.header {
+  width: 90%;
+  max-width: 1000px;
+  align-items: center;
 }
 
 .card-holder {
@@ -199,7 +225,7 @@ body {
 .tag-holder-horizontal-line {
   height: 1px;
   background-color: black;
-  width: 90%;
+  width: 100%;
   max-width: 1000px;  
 }
 
