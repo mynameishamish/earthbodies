@@ -17,6 +17,8 @@ const modalTitle = document.querySelector("div.modal-title");
 const modalContent = document.querySelector("modal-content");
 const modalBackground = document.querySelector(".modal");
 
+const imageTags = document.querySelectorAll(".galleryimage")
+
 let fadeTiming = 0;
 
 let taggedColours = [];
@@ -382,4 +384,7 @@ function updateModals() {
 function updateModalContent(number) {
   modalTitle.textContent = colours[number].place;
   modalBackground.style.backgroundColor = colours[number].background;
+  imageTags[0].src = colours[number].image1
+  imageTags[1].src = colours[number].image2
+  imageTags[2].src = colours[number].image3
 }
