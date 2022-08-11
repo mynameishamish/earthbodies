@@ -1,5 +1,5 @@
 const colorThief = new ColorThief();
-const img = document.querySelectorAll('img');
+const img = document.querySelectorAll('li.slide');
 const swatches = document.querySelectorAll('div.colour-swatch');
 const gradient = document.querySelector('div.colour-gradient')
 
@@ -24,31 +24,41 @@ const changeSwatches = (array) => {
     swatches.forEach((swatch, index) => {
         swatch.style.backgroundColor = array[index]
     });
-    console.log(array[0])
+    // console.log(array[0])
     // gradient.style.background = `conic-gradient(at 75% 20%, ${array[0]}, ${array[1]}, ${array[2]}, ${array[3]})`
-    let backgroundColour = `radial-gradient(ellipse at top left, ${array[0]}, transparent 60%), radial-gradient(ellipse at bottom left, ${array[1]}  15% , transparent 60%), radial-gradient(ellipse at top right, ${array[2]} , transparent 60%), radial-gradient(ellipse at bottom right, ${array[3]} 15%, transparent 60%)`
+    let backgroundColour = `radial-gradient(ellipse at top left, ${array[0]} 30%, transparent 90%), radial-gradient(ellipse at bottom left, ${array[1]}  50% , transparent 90%), radial-gradient(ellipse at top right, ${array[2]} 15%, transparent 40%), radial-gradient(ellipse at bottom right, ${array[3]} 5%, transparent 90%)`
     gradient.style.background = backgroundColour
-    console.log(backgroundColour)
+    // console.log(backgroundColour)
 }
 
 // // // Make sure image is finished loading
 
-if (img[13].complete) {
-  colourPalette = colorThief.getPalette(img[13])
-  convertColourPallette()
-  colourArray = convertColourPallette()
-  console.log(colourArray)
-  changeSwatches(colourArray)
-} else {
-  img[13].addEventListener('load', function() {
-    colourPalette = colorThief.getPalette(img[13])
+console.log(colours[0].image2)
+console.log(img[0])
+
+imageToScan = img[0].querySelector('img')
+console.log(imageToScan)
+
+const updateColourSwatches = () => {
+  if (imageToScan.complete) {
+    colourPalette = colorThief.getPalette(imageToScan)
+    convertColourPallette()
     colourArray = convertColourPallette()
-    console.log(colourArray)
+    // console.log(colourArray)
     changeSwatches(colourArray)
-  });
+  } else {
+    imageToScan.addEventListener('load', function() {
+      colourPalette = colorThief.getPalette(imageToScan)
+      colourArray = convertColourPallette()
+      // console.log(colourArray)
+      changeSwatches(colourArray)
+      
+    });
+  }
 }
 
-console.log(swatches)
+updateColourSwatches()
+
 
 
 
