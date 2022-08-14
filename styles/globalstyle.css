@@ -26,3 +26,7 @@ body {
     font-family: "Grosa";
     background-color: #EFEDE6;
 }
+
+.header-upper {
+    height: 50px;
+}

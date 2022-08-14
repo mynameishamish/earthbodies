@@ -16,8 +16,11 @@ const tagsOuter = document.querySelectorAll("div.tag")
 const modalTitle = document.querySelector("div.modal-title");
 const modalContent = document.querySelector("modal-content");
 const modalBackground = document.querySelector(".modal");
+const modalBody = document.querySelector("div.modal-body")
 
 const imageTags = document.querySelectorAll(".galleryimage")
+
+const modalProjectHolder = document.querySelector("div.projects-divider")
 
 let fadeTiming = 0;
 
@@ -44,16 +47,20 @@ function createCard(item) {
   let cardContainer = document.createElement("div");
   let cardInner = document.createElement("div");
   let cardContent = document.createElement("div");
+  let cardImg = document.createElement("img")
 
   cardContainer.className = "card";
   cardInner.className = "card-inner";
   cardContent.className = "card-content";
+  cardImg.className = "card-img"
 
   cardContent.textContent = item.place;
   cardContainer.setAttribute("id", item.number);
+  cardImg.setAttribute("src", item.image1)
 
   cardContainer.appendChild(cardInner);
   cardContainer.appendChild(cardContent);
+  cardInner.appendChild(cardImg)
 
   cardInner.style.backgroundColor = item.background;
 
@@ -378,13 +385,46 @@ function updateModals() {
     if (modal == null) return;
     modal.classList.remove("active");
     overlay.classList.remove("active");
+    removeElementsByClass("modal-project")
   }
 }
 
 function updateModalContent(number) {
   modalTitle.textContent = colours[number].place;
-  modalBackground.style.backgroundColor = colours[number].background;
+  modalBody.textContent = "hello"
+  // modalBackground.style.backgroundColor = colours[number].background;
   imageTags[0].src = colours[number].image1
   imageTags[1].src = colours[number].image2
   imageTags[2].src = colours[number].image3
+
+
+  if (colours[number].projects.length > 0) {
+    colours[number].projects.forEach((project) => {
+      makeModalProject(project)
+    })
+  }
+}
+
+function makeModalProject(project) {
+  let modalProject = document.createElement("div")
+  let projectImg = document.createElement("img")
+  let projectTitle = document.createElement("div")
+
+  modalProject.className = "modal-project"
+  projectTitle.className = "project-label"
+
+  projectTitle.textContent = project.name
+  projectImg.setAttribute("src", project.image)
+
+  modalProject.appendChild(projectImg)
+  modalProject.appendChild(projectTitle)
+  
+  modalProjectHolder.appendChild(modalProject)
+}
+
+function removeElementsByClass(className){
+  const elements = document.getElementsByClassName(className);
+  while(elements.length > 0){
+      elements[0].parentNode.removeChild(elements[0]);
+  }
 }

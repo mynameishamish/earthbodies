@@ -2,8 +2,10 @@ const colorThief = new ColorThief();
 const img = document.querySelectorAll('li.slide');
 const swatches = document.querySelectorAll('div.colour-swatch');
 const gradient = document.querySelector('div.colour-gradient')
+const swatchLabels = document.querySelectorAll('div.swatch-label')
 
 let colourPalette = [];
+let colourDominant = [];
 let colourArray = [];
 
 const rgbToHex = (r, g, b) => '#' + [r, g, b].map(x => {
@@ -23,6 +25,7 @@ const convertColourPallette = () => {
 const changeSwatches = (array) => {
     swatches.forEach((swatch, index) => {
         swatch.style.backgroundColor = array[index]
+        swatchLabels[index].innerHTML = array[index]
     });
     // console.log(array[0])
     // gradient.style.background = `conic-gradient(at 75% 20%, ${array[0]}, ${array[1]}, ${array[2]}, ${array[3]})`
@@ -33,26 +36,26 @@ const changeSwatches = (array) => {
 
 // // // Make sure image is finished loading
 
-console.log(colours[0].image2)
-console.log(img[0])
+// console.log(colours[0].image2)
+// console.log(img[0])
 
 imageToScan = img[0].querySelector('img')
-console.log(imageToScan)
+// console.log(imageToScan)
 
 const updateColourSwatches = () => {
   if (imageToScan.complete) {
+    colourDominant = colorThief.getColor(imageToScan)
+    colourDominant = rgbToHex(colourDominant[0], colourDominant[1], colourDominant[2])
     colourPalette = colorThief.getPalette(imageToScan)
-    convertColourPallette()
     colourArray = convertColourPallette()
-    // console.log(colourArray)
     changeSwatches(colourArray)
   } else {
     imageToScan.addEventListener('load', function() {
+      colourDominant = colorThief.getColor(imageToScan)
+      colourDominant = rgbToHex(colourDominant[0], colourDominant[1], colourDominant[2])
       colourPalette = colorThief.getPalette(imageToScan)
       colourArray = convertColourPallette()
-      // console.log(colourArray)
       changeSwatches(colourArray)
-      
     });
   }
 }
