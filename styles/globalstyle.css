@@ -22,9 +22,15 @@
     src: url(fonts/selfmodern-bold.ttf);
 }
 
+:root {
+    --main-bg-colour: #EFEDE6;;
+}
+  
+
 body {
     font-family: "Grosa";
-    background-color: #EFEDE6;
+    background-color: var(--main-bg-colour);
+    letter-spacing: -0.04em;
 }
 
 .header-upper {

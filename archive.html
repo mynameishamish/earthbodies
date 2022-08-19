@@ -12,7 +12,7 @@
   <link href="styles/archive.css" rel="stylesheet">
 
   <link rel="stylesheet" href="styles/carousel.css"> 
-  
+  <link rel="stylesheet" href="styles/modal.css"> 
 </head>
 
 
@@ -37,20 +37,27 @@
   <div class="tag-label">Material</div>      
   <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Earth</div></div> 
   <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Tree</div></div>     
-  <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Grass</div></div>  
+  <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Plant</div></div>  
+  <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Fungi</div></div> 
+  <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Inorganic</div></div>    
   </div>    
   <div class="tag-divider">     
     <div class="tag-label">Project</div>        
     <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Dyeing</div></div> 
     <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Weaving</div></div>     
     <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Painting</div></div>  
+    <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Gardening</div></div>      
+    <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Cooking</div></div>      
   </div>   
   <div class="tag-holder-divider"></div>
-  <div class="tag-divider">     
-    <div class="tag-label">View</div>        
-    <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Sample</div></div> 
+  <div class="tag-divider" id="settings">     
+    <div class="tag-label">Toggle View</div>        
+    <!-- <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Sample</div></div> 
     <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Environment</div></div>     
-    <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Gradient</div></div>  
+    <div class="tag"><img src="img/arrow.png"></img><div class="tag-inner">Gradient</div></div>   -->
+    <div id="toggle">
+      <i class="indicator"></i>
+    </div>
   </div>     
   </div>
   <div class="tag-holder-horizontal-line"></div>  
@@ -71,10 +78,14 @@
           <button data-close-button class="close-button">&times;</button>
         
         </div>
-        <div class="modal-body">
-          <h1>Title</h1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quod alias ut illo doloremque eum ipsum obcaecati distinctio debitis reiciendis quae quia soluta totam doloribus quos nesciunt necessitatibus, consectetur quisquam accusamus ex, dolorum, dicta vel? Nostrum voluptatem totam, molestiae rem at ad autem dolor ex aperiam. Amet assumenda eos architecto, dolor placeat deserunt voluptatibus tenetur sint officiis perferendis atque! Voluptatem maxime eius eum dolorem dolor exercitationem quis iusto totam! Repudiandae nobis nesciunt sequi iure! Eligendi, eius libero. Ex, repellat sapiente!
+
+        <div class="modal-body-content">
+          <div class="modal-body">
+            body
+          </div>
         </div>
+            
+
         <div class="modal-colour">
           <div class="colour-gradient">
 
@@ -117,18 +128,10 @@
         </div> -->
         <section aria-label="Image Gallery">
           <div class="carousel" data-carousel>
-            <button class="carousel-button prev" data-carousel-button="prev">&#8656;</button>
-            <button class="carousel-button next" data-carousel-button="next">&#8658;</button>
-            <ul data-slides>
-              <li class="slide" data-active>
-                <img class="galleryimage" src="../img/landing_bg.jpg" alt="Nature Image #1">
-              </li>
-              <li class="slide">
-                <img class="galleryimage" src="https://source.unsplash.com/eOpewngf68w" alt="Nature Image #2">
-              </li>
-              <li class="slide">
-                <img class="galleryimage" src="https://source.unsplash.com/ndN00KmbJ1c" alt="Nature Image #3">
-              </li>
+            <button class="carousel-button prev" data-carousel-button="prev"></button>
+            <button class="carousel-button next" data-carousel-button="next"></button>
+            <ul id="slide-list" data-slides>
+
             </ul>
           </div>
           
@@ -151,8 +154,13 @@
 
   </div>
 
-
-
+<!-- 
+  <div class="project-modal">
+    <div class="project-modal-image">
+      <img src="/img/arc/1/proj1.jpg" alt="" srcset="">
+    </div>
+    <div class="project-modal-caption"></div>
+  </div> -->
   <div id="overlay"></div>
 
 
@@ -169,4 +177,5 @@
 <script type="text/javascript" src="scripts/colorextraction.js"></script>
 
 <script type="text/javascript" src="scripts/archive.js"></script>
+<script type="text/javascript" src="scripts/toggle.js"></script>
 

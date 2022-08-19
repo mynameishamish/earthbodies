@@ -46,18 +46,21 @@
     font-size: 4rem;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(255, 255, 255, .5);
+    color: var(--main-bg-colour);
     cursor: pointer;
     border-radius: .25rem;
     padding: 0 .5rem;
-    background-color: rgba(0, 0, 0, .1);
-    
+    background-color: var(--main-bg-colour);
+    opacity: 30%;
+    width: 75px;
+    height: 75px;
+    border-radius: 100px;
   }
   
   .carousel-button:hover,
   .carousel-button:focus {
     color: white;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: var(--main-bg-colour);
   }
   
   .carousel-button:focus {

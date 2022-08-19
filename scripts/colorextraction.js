@@ -1,5 +1,4 @@
 const colorThief = new ColorThief();
-const img = document.querySelectorAll('li.slide');
 const swatches = document.querySelectorAll('div.colour-swatch');
 const gradient = document.querySelector('div.colour-gradient')
 const swatchLabels = document.querySelectorAll('div.swatch-label')
@@ -39,10 +38,14 @@ const changeSwatches = (array) => {
 // console.log(colours[0].image2)
 // console.log(img[0])
 
-imageToScan = img[0].querySelector('img')
+// imageToScan = img[0].querySelector('img')
 // console.log(imageToScan)
 
 const updateColourSwatches = () => {
+
+  const img = document.querySelectorAll('li.slide');
+  imageToScan = img[0].querySelector('img')
+  
   if (imageToScan.complete) {
     colourDominant = colorThief.getColor(imageToScan)
     colourDominant = rgbToHex(colourDominant[0], colourDominant[1], colourDominant[2])
@@ -60,7 +63,7 @@ const updateColourSwatches = () => {
   }
 }
 
-updateColourSwatches()
+// updateColourSwatches()
 
 
 
