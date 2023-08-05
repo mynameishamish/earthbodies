@@ -1,7 +1,7 @@
 body {
 
     background-color: black;
-    font-family: "Grosa";
+    font-family: "Acumin";
     font-weight: 700;
 }
 
@@ -31,16 +31,59 @@ body {
 }
 
 .name {
-    font-family: "SelfModern";
+    font-family: "LaFleur";
     font-weight: 300;
-    font-size: 55px;
-    color: #EFEDE6;
+    font-size: 120px;
+    color: #000;
 }
 
 .name.upper {
-    font-size: 65px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    height: 100px;
 }
 
 .name.lower {
-    font-size: 56px;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    height: 100px;
 }
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+
+    margin: 24px 0px 0px 0px;
+    font: "Acumin";
+}
+
+.link {
+    font-size: 20px;
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+
+}
+
+.link img {
+    height: 100%;
+    width:auto;
+    padding-bottom: 5px;
+    margin-left: 5px;
+    
+}
+
+a:link a:visited a:active {
+    color: #000;
+    text-transform: uppercase;
+}
+

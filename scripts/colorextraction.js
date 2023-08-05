@@ -45,6 +45,13 @@ const updateColourSwatches = () => {
 
   const img = document.querySelectorAll('li.slide');
   imageToScan = img[0].querySelector('img')
+
+  // const imgThumb = document.getElementById('modal-thumb')
+  // imageToScan = imgThumb
+  // console.log(imageToScan)
+
+  // imageToScan = img;
+  // console.log(imageToScan)
   
   if (imageToScan.complete) {
     colourDominant = colorThief.getColor(imageToScan)

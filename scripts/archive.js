@@ -18,6 +18,7 @@ const modalContent = document.querySelector("modal-content");
 const modalBackground = document.querySelector(".modal");
 const modalBodyContainer = document.querySelector("div.modal-body-content")
 const modalBody = document.querySelector("div.modal-body")
+const modalThumb = document.getElementById("modal-thumb")
 
 const imageTags = document.querySelectorAll(".galleryimage")
 
@@ -72,7 +73,7 @@ function createCard(item) {
 
   cardContent.textContent = item.place;
   cardContainer.setAttribute("id", item.number);
-  cardImg.setAttribute("src", item.images[0].src)
+  cardImg.setAttribute("src", item.thumb)
   cardImgContext.setAttribute("src", item.images[1].src)
 
   cardContainer.appendChild(cardInner);
@@ -460,6 +461,7 @@ function updateModals() {
 function updateModalContent(number) {
   modalTitle.textContent = colours[number].place;
   modalBody.textContent = colours[number].description
+  modalThumb.src = colours[number].thumb
 
   if (colours[number].highlight.length > 5) {
     createModalHighlight(number)
@@ -513,6 +515,7 @@ function updateModalSlideShow(image) {
 }
 
 function makeModalProject(project) {
+
   let modalProject = document.createElement("div")
   let projectImg = document.createElement("img")
   let projectTitle = document.createElement("div")

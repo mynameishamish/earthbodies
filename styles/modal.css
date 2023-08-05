@@ -1,6 +1,6 @@
 
 .modal {
-    position: absolute;
+    position: fixed;
     z-index: 2;
     background-color: var(--main-bg-colour);
     border: none;
@@ -109,9 +109,9 @@
   .modal-header .modal-title {
     font-size: 2em;
     /* font-weight: bold; */
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     /* text-transform: uppercase; */
-    font-family: "Self Modern";
+    font-family: "LaFleur";
   }
   
   .modal-header button {
@@ -125,7 +125,7 @@
   
   .modal-body {
     padding-top: 10px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 110%;
     padding-bottom: 10px;
     letter-spacing: -0.04em;
@@ -144,7 +144,7 @@
     border-width: 1px;
   
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 14px;
     display: block;
     padding: 5px 15px 6.5px 15px;
     border-radius: 1em;
@@ -160,7 +160,7 @@
   }
   
   .modal-body h1 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
   }
   
@@ -170,10 +170,17 @@
     padding-bottom: 10px;
     border-bottom: 1px solid black;
   }
+
+  .modal-col-holder {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
   
   .colour-gradient {
-    width: 100%;
-    height: 150px;
+    width: 50%;
+    height: 125px;
     display: grid;
     place-items: center;
     background:
@@ -183,9 +190,18 @@
     radial-gradient(ellipse at bottom right, rgb(81, 82, 213)   15% , transparent 60%);
     
   }
+
+  .colour-thumb {
+    width: 50%;
+  }
+
+  .colour-thumb img {
+    width: 100%;
+    height: 125px;
+  }
   
   .colour-divider {
-    height: 5px;
+    height: 16px;
     width: 100%;
   }
   
@@ -209,7 +225,7 @@
   
   .swatch-label {
     padding: 5px 0 0 0;
-    font-size: 10px;
+    font-size: 14px;
     text-align: center;
   }
   
@@ -231,7 +247,7 @@
     display: flex;
     flex-direction: column;
     aspect-ratio: 1.75 / 1;
-    font-size: 10px;
+    font-size: 14px;
     text-align: center;
     padding: 0 0 10px 0;
   }
